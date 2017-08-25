@@ -38,6 +38,7 @@
     "commander": "^2.8.1",
     "defaults": "^1.0.2",
     "nan": "^2.0.0",
+    "node-gyp": "^3.6.2",
     "node-pre-gyp": "^0.6.4"
   },
   "devDependencies": {
@@ -63,7 +64,7 @@
   ],
   "scripts": {
     "coveralls": "coveralls < ./coverage/lcov.info",
-    "install": "node-pre-gyp install --fallback-to-build",
+    "install": "if [ ! -e zopfli]; then git clone --depth=1 zopfli; fi; node-pre-gyp install --build-from-source",
     "lint": "eslint .",
     "mocha": "mocha test",
     "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec test",
